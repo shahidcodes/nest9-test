@@ -6,8 +6,9 @@ import { Cat, CatSchema } from './models/cat.schema';
 
 @Global()
 @Module({
+  imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
   controllers: [DatabaseController],
   providers: [DatabaseService],
-  imports: [MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }])],
+  exports: [DatabaseService],
 })
 export class DatabaseModule {}
